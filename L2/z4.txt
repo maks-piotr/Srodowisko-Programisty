@@ -1,0 +1,24 @@
+svn checkout https://repo.cs.pwr.edu.pl//261746/tests/
+cd tests
+cat > tmp.txt
+./extrepo https://repo.cs.pwr.edu.pl/info/
+svn propset svn:externals externals -F tmp.txt
+svn commit -m "added externals"
+cd ..
+mkdir wcopy
+cd wcopy
+svn co https://repo.cs.pwr.edu.pl//261746/tests/ --ignore-externals
+cd tests
+cd externals
+svn up --ignore-externals
+cd externals
+ls
+svn up
+cd ..
+mkdir wcopy2
+cd wcopy2
+svn co https://repo.cs.pwr.edu.pl//261746/tests/
+cd tests/externals/extrepo
+ls
+svn up
+svn log -v

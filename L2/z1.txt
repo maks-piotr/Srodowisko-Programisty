@@ -1,0 +1,31 @@
+Zad 1.
+
+mkdir workingcopy1
+cd workingcopy1
+svn checkout https://repo.cs.pwr.edu.pl/261746/tests
+echo "test1" > tests/test1.txt
+svn add ./tests/test1.txt
+cd ..
+mkdir workingcopy2
+cd workingcopy2
+svn checkout https://repo.cs.pwr.edu.pl/261746/tests
+echo "test2" > tests/test1.txt
+svn add ./tests/test1.txt
+cd tests
+svn commit -m "dodano test1.txt z trescia test2"
+cd ../../workingcopy1/tests
+svn commit -m "dodano test1.txt z trescia test1"
+svn update
+m
+p
+ls
+cat test1.txt
+cat test1.txt.tmp
+cat test1.txt.2.tmp
+cat test1.txt.3.tmp
+echo "test12" > test1.txt
+rm test1.txt.*
+svn resolved test1.txt
+svn commit -m "zmergowano test1 z test2"
+svn up
+svn log -v

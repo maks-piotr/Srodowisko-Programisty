@@ -1,0 +1,21 @@
+svn checkout https://repo.cs.pwr.edu.pl//261746/SP/L1/
+cd L1
+svn export https://repo.cs.pwr.edu.pl/info/SP-20-21/l1/a/
+./L1_Z1.sh a
+svn propset svn:executable on L1_Z1.sh
+./L1_Z1.sh a
+sha256sum L1_Z1.sh
+svn propdel svn:executable L1_Z1.sh
+./L1_Z1.sh a
+sha256sum L1_Z1.sh
+#Pliki zachowują identyczną zawartość, zmienia się executable bit
+#
+#
+svn propset svn:executable on L1_Z1.sh
+svn commit -m "executable set on L1_Z1.sh"
+svn export https://repo.cs.pwr.edu.pl//261746/SP/L1/
+cd L1
+./L1_Z1.sh a
+#ustawiony executable bit jest wysyłany na repozytorium przy commicie
+svn up
+svn log -v

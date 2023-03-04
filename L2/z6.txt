@@ -1,0 +1,26 @@
+svn checkout https://repo.cs.pwr.edu.pl//261746/tests/z6
+cd z6
+echo aa > a.txt
+echo bb > b.txt
+svn add a.txt b.txt
+svn commit -m "dodano a,b txt"
+svn delete b.txt
+svn commit -m "usunieto b.txt"
+echo bbb >> a.txt
+svn move a.txt b.txt
+svn commit -m "przeniesiono a.txt do b.txt"
+echo cccc >> b.txt
+svn move b.txt c.txt
+svn commit -m "przeniesiono b.txt do c.txt"
+echo "new b" > b.txt
+svn add b.txt
+svn commit -m "dodano b.txt"
+svn up
+svn log -v b.txt
+svn log -v c.txt
+svn log -v .
+svn diff -r 35:38 c.txt@HEAD
+svn cat -r 35 c.txt
+svn cat -r 36 c.txt
+svn cat -r 37 c.txt
+svn cat -r 38 c.txt

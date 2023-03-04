@@ -1,0 +1,22 @@
+mkdir wcopy1
+cd wcopy1
+svn checkout https://repo.cs.pwr.edu.pl//261746/tests/
+cd tests
+echo "skarb" > skrzynia.txt
+svn add skrzynia.txt
+svn commit -m "skrzynia ze skarbem"
+svn lock skrzynia.txt
+svn status
+cd ../..
+mkdir wcopy2
+cd wcopy2
+svn checkout https://repo.cs.pwr.edu.pl//261746/tests/
+cd tests
+echo "nowy skarb" > skrzynia.txt
+svn commit -m "skrzynia ze zmodyfikowanym skarbem"
+svn unlock skrzynia.txt
+svn unlock --force skrzynia.txt
+svn commit -m "skrzynia ze zmodyfikowanym skarbem"
+svn lock skrzynia.txt
+cd ../../wcopy1/tests
+svn lock --force skrzynia.txt

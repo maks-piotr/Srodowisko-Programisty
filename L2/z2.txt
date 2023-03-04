@@ -1,0 +1,15 @@
+svn checkout https://repo.cs.pwr.edu.pl//261746/tests/a/ --depth infinity
+tree a
+svn update --set-depth immediates a
+tree a
+svn update --set-depth empty a
+tree a
+svn update --set-depth infinity a/ab
+tree a
+svn update --set-depth immediates a/ab
+tree a
+svn update --set-depth infinity a/a
+tree a
+svn update --set-depth files a/a/b
+tree a
+svn log -v
